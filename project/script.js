@@ -10,12 +10,12 @@ class TupleEditor {
   constructor() {
     this.form = document.getElementById("tupleForm");
     this.tableBody = document.querySelector(".tupleTable tbody");
-    this.form.addEventListener("submit", (e) => this.addTuple(e));
+    this.form.addEventListener("submit", (e) => this.addData(e));
 
     this.displayStoredTuples();
   }
 
-  addTuple(e) {
+  addData(e) {
     e.preventDefault();
 
     let firstName = document.getElementById("firstName").value;
@@ -33,16 +33,16 @@ class TupleEditor {
     tuples.push(tuple);
     localStorage.setItem("tuples", JSON.stringify(tuples));
 
-    this.addTupleToTable(tuple); //*Calls another method that updates the table visually.
+    this.addDataToTable(tuple); //*Calls another method that updates the table visually.
     this.form.reset();
   }
 
   displayStoredTuples() {
     let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
-    tuples.forEach((tuple) => this.addTupleToTable(tuple)); //*loops through each saved record.
+    tuples.forEach((tuple) => this.addDataToTable(tuple)); //*loops through each saved record.
   }
 
-  addTupleToTable(tuple) {
+  addDataToTable(tuple) {
     let row = document.createElement("tr");
     row.innerHTML = `
       <td>${tuple.firstName}</td>
