@@ -14,7 +14,7 @@ body {
 .container {
   display: flex;
   width: 900px;
-  height: 500px;
+  height: auto;
   background: #fff;
   border-radius: 15px;
 }
@@ -45,6 +45,7 @@ table th, table td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding: 8px;
   text-align: left;
+  
 }
 .right-side {
   flex: 1;
@@ -82,21 +83,11 @@ input {
   border-radius: 20px;
   cursor: pointer;
 }
-#clearformBtn {
-  margin-top: 15px;
-  padding: 10px;
-  background: #8e24aa;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-}
+
 #addBtn:hover {
   background: #6a1b9a;
 }
-#clearformBtn:hover {
-  background: #6a1b9a;
-}
+
 .last-btn {
   display: flex;
   justify-content: space-between;
@@ -120,3 +111,31 @@ input {
 #clearallBtn:hover {
   background: #b71c1c;
 }
+.edit-btn {
+  background: #0288d1;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 57px;
+}
+.edit-btn:hover {
+  background: #01579b;
+}
+.delete-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.delete-btn:hover {
+  background: #b71c1c;
+}
+
+
+
+

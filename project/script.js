@@ -49,7 +49,48 @@ class TupleEditor {
       <td>${tuple.lastName}</td>
       <td>${tuple.phone}</td>
       <td>${tuple.address}</td>
+      <td>
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
+    </td>
     `;
+    const deleteBtn = row.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      row.remove(); 
+
+      let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
+      tuples = tuples.filter(
+        (t) =>
+          !(
+            t.firstName === tuple.firstName &&
+            t.lastName === tuple.lastName &&
+            t.phone === tuple.phone &&
+            t.address === tuple.address
+          )
+      );
+      localStorage.setItem("tuples", JSON.stringify(tuples));
+    });
+     const editBtn = row.querySelector(".edit-btn");
+     editBtn.addEventListener("click", () => {
+      document.getElementById("firstName").value = tuple.firstName;
+      document.getElementById("lastName").value = tuple.lastName;
+      document.getElementById("phone").value = tuple.phone;
+      document.getElementById("address").value = tuple.address;
+
+      row.remove();
+      let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
+      tuples = tuples.filter(
+        (t) =>
+          !(
+            t.firstName === tuple.firstName &&
+            t.lastName === tuple.lastName &&
+            t.phone === tuple.phone &&
+            t.address === tuple.address
+          )
+      );
+      localStorage.setItem("tuples", JSON.stringify(tuples));
+    });
+  
     this.tableBody.appendChild(row);
   }
 }
