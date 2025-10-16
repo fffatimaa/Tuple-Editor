@@ -13,10 +13,11 @@ body {
 }
 .container {
   display: flex;
-  width: 60%;
+  width: auto;
   height: auto;
   background: #fff;
   border-radius: 15px;
+  flex-wrap: wrap;
 }
 .left-side {
   background: linear-gradient(160deg, #8e24aa, #ab47bc);
@@ -102,6 +103,7 @@ input {
 }
 #clearallBtn{
     padding: 6px;
+    flex-wrap: wrap;
     border-radius: 20px;
     margin-right: 7px;
     border: 1px solid #ccc;
