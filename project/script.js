@@ -90,7 +90,14 @@ class TupleEditor {
       );
       localStorage.setItem("tuples", JSON.stringify(tuples));
     });
-  
+
+    this.clearBtn = document.getElementById("clearallBtn");
+    this.clearBtn.addEventListener("click", () => {
+    localStorage.removeItem("tuples");
+    this.tableBody.innerHTML = "";
+    
+});
+
     this.tableBody.appendChild(row);
   }
 }
