@@ -6,58 +6,82 @@ class Tuple {
     this.address = address;
   }
 }
+
 class TupleEditor {
   constructor() {
     this.form = document.getElementById("tupleForm");
     this.tableBody = document.querySelector(".tupleTable tbody");
+    this.modal = document.getElementById("tupleModal");
+    this.closeBtn = document.querySelector(".close-btn");
+    this.openBtn = document.getElementById("openModalBtn");
+
     this.form.addEventListener("submit", (e) => this.addData(e));
+    this.openBtn.addEventListener("click", () => this.openModal());
+    this.closeBtn.addEventListener("click", () => this.closeModal());
+
+    window.addEventListener("click", (e) => {
+      if (e.target === this.modal) {
+        this.closeModal();
+      }
+    });
 
     this.displayStoredTuples();
+  }
+
+  openModal() {
+    this.modal.style.display = "flex";
+  }
+
+  closeModal() {
+    this.modal.style.display = "none";
+    this.form.reset();
   }
 
   addData(e) {
     e.preventDefault();
 
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-    let phone = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
 
     if (!firstName || !lastName || !phone || !address) {
       alert("Please fill all fields");
       return;
     }
 
-    let tuple = new Tuple(firstName, lastName, phone, address);
-    let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
+    const tuple = new Tuple(firstName, lastName, phone, address);
+    const tuples = JSON.parse(localStorage.getItem("tuples")) || [];
     tuples.push(tuple);
     localStorage.setItem("tuples", JSON.stringify(tuples));
 
-    this.addDataToTable(tuple); //*Calls another method that updates the table visually.
+    this.addDataToTable(tuple);
     this.form.reset();
+    this.closeModal();
   }
 
   displayStoredTuples() {
-    let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
-    tuples.forEach((tuple) => this.addDataToTable(tuple)); //*loops through each saved record.
+    const tuples = JSON.parse(localStorage.getItem("tuples")) || [];
+    tuples.forEach((tuple) => this.addDataToTable(tuple));
   }
 
   addDataToTable(tuple) {
-    let row = document.createElement("tr");
+    const row = document.createElement("tr");
     row.innerHTML = `
       <td>${tuple.firstName}</td>
       <td>${tuple.lastName}</td>
       <td>${tuple.phone}</td>
       <td>${tuple.address}</td>
       <td>
-      <button class="edit-btn">Edit</button>
-      <button class="delete-btn">Delete</button>
-    </td>
+        <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+      </td>
     `;
-    const deleteBtn = row.querySelector(".delete-btn");
-    deleteBtn.addEventListener("click", () => {
-      row.remove(); 
 
+    const deleteBtn = row.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () =>{
+    
+      row.remove();
       let tuples = JSON.parse(localStorage.getItem("tuples")) || [];
       tuples = tuples.filter(
         (t) =>
@@ -70,8 +94,10 @@ class TupleEditor {
       );
       localStorage.setItem("tuples", JSON.stringify(tuples));
     });
-     const editBtn = row.querySelector(".edit-btn");
-     editBtn.addEventListener("click", () => {
+
+    const editBtn = row.querySelector(".edit-btn");
+    editBtn.addEventListener("click", () => {
+      this.openModal();
       document.getElementById("firstName").value = tuple.firstName;
       document.getElementById("lastName").value = tuple.lastName;
       document.getElementById("phone").value = tuple.phone;
@@ -90,13 +116,11 @@ class TupleEditor {
       );
       localStorage.setItem("tuples", JSON.stringify(tuples));
     });
-
-    this.clearBtn = document.getElementById("clearallBtn");
-    this.clearBtn.addEventListener("click", () => {
-    localStorage.removeItem("tuples");
-    this.tableBody.innerHTML = "";
-    
-});
+      this.clearBtn = document.getElementById("clearallBtn");
+      this.clearBtn.addEventListener("click", () => {
+      localStorage.removeItem("tuples");
+      this.tableBody.innerHTML = "";
+    });
 
     this.tableBody.appendChild(row);
   }

@@ -5,44 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuple Editor</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
 </head>
 <body>
-  <main class="container">
-    <div class="left-side">
-      <h2>Stored Data</h2>
-      <table class="tupleTable">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-         
-        </tbody>
-      </table>
-    </div>
-    <div class="right-side">
-      <h1>Tuple Editor</h1>
+
+  <h1 class="heading">Tuple Editor</h1>
+  <button id="openModalBtn" class="add-tuple-btn">Add New Tuple</button>
+
+  <div class="table-container">
+    <h2>Stored Data</h2>
+    <table class="tupleTable">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <button id="clearallBtn" class="clear-btn">Clear All</button>
+
+  <div id="tupleModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Add Tuple</h2>
       <form id="tupleForm">
-        <input type="text" id="firstName" placeholder="First Name"/>
+        <input type="text" id="firstName" placeholder="First Name" />
         <input type="text" id="lastName" placeholder="Last Name" />
         <input type="tel" id="phone" placeholder="Phone Number" />
-        <input type="text" id="address" placeholder="Address"  />
-
+        <input type="text" id="address" placeholder="Address" />
+        <br>
         <button type="submit" id="addBtn">Add</button>
-       
       </form>
-
-      <div class="last-btn">
-        <input type="search" id="search" placeholder="Search..." />
-        <button id="clearallBtn" >Clear All</button>
-      </div>
     </div>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
