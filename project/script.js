@@ -52,10 +52,10 @@ class TupleEditor {
   addData(e) {
     e.preventDefault();
 
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
 
     if (!firstName || !lastName || !phone || !address) {
       alert("Please fill all fields");
