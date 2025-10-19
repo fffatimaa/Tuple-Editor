@@ -17,6 +17,7 @@ body {
   color: white;
   font-size: 50px;
   margin-bottom: 20px;
+  
 }
 .add-tuple-btn {
   background: #8e24aa;
@@ -156,4 +157,67 @@ th, td {
   cursor: pointer;
   align-self: flex-end;
 }
+.pagination {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.pagination button {
+  background: #8e24aa;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.pagination button:hover {
+  background: #6a1b9a;
+}
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+    max-width: 768px
+  }
+  thead {
+    display: none; 
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    padding: 12px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #8e24aa;
+    flex-basis: 40%;
+    text-align: left;
+  }
+
+  td button {
+    margin-left: 8px;
+  }
+}
+
 
