@@ -28,9 +28,18 @@
     </table>
   </div>
     <div class="pagination">
-      <button id="prevBtn">Previous</button>
-      <button id="nextBtn">Next</button>
-    </div>
+    <label for="rowsPerPageSelect">Items per page:</label>
+  <select id="rowsPerPageSelect">
+    <option value="5">5</option>
+    <option value="10" selected>10</option>
+    <option value="15">15</option>
+  </select>
+
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+</div>
+
+     
   </div>
   <button id="clearallBtn" class="clear-btn">Clear All</button>
 

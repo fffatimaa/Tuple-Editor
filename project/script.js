@@ -17,14 +17,24 @@ class TupleEditor {
     this.prevBtn = document.getElementById("prevBtn");
     this.nextBtn = document.getElementById("nextBtn");
 
-    this.currentPage = 1;
-    this.rowsPerPage = 10;
-
+  
     this.form.addEventListener("submit", (e) => this.addData(e));
     this.openBtn.addEventListener("click", () => this.openModal());
     this.closeBtn.addEventListener("click", () => this.closeModal());
     this.prevBtn.addEventListener("click", () => this.prevPage());
     this.nextBtn.addEventListener("click", () => this.nextPage());
+
+    this.rowsPerPageSelect = document.getElementById("rowsPerPageSelect");
+    this.rowsPerPage = parseInt(this.rowsPerPageSelect.value);
+
+    this.currentPage = 1;
+
+   //* Event for dropdown change
+    this.rowsPerPageSelect.addEventListener("change", (e) => {
+      this.rowsPerPage = parseInt(e.target.value);
+      this.currentPage = 1;
+      this.displayTuplesWithButtons();
+    });
 
     this.clearBtn = document.getElementById("clearallBtn");
     this.clearBtn.addEventListener("click", () => {

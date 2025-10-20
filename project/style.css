@@ -219,5 +219,24 @@ th, td {
     margin-left: 8px;
   }
 }
+.pagination label {
+  color: white;
+  margin-right: 8px;
+}
+
+.pagination select {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  background: #8e24aa;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.pagination select:hover {
+  background: #6a1b9a;
+}
+
 
 
